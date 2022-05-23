@@ -1,0 +1,16 @@
+todo.txt
+
+*.pyc
+
+#vim
+*.swp
+*.swo
+
+*.o
+*.so
+*.a
+*.dbg
+
+__pycache__
+test/out
+docker/qemu
