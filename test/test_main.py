@@ -41,9 +41,10 @@ def checkOutput(out, expected):
 
 
 @pytest.mark.parametrize(
-    "dataIn, expected",
+    "mainFileName, dataIn, expected",
     [
         (
+            "helloWorld",
             [
                 Variable("greeting", ".asciz \"Hello world!\"", 12, 2),
                 Variable("intVar", ".word 42", 4, 2)
@@ -63,15 +64,55 @@ def checkOutput(out, expected):
                 ((1, "char"), '!'),
                 ((4, "int"), 42)
             ]
+        ),
+        (
+            "findMaxInArr",
+            [
+                Variable("size", ".word 1", 4, 2),
+                Variable("arr", ".word 0", 4, 2)
+            ],
+            [
+                ((4, "int"), 0)
+            ]
+        ),
+        (
+            "findMaxInArr",
+            [
+                Variable("size", ".word 2", 4, 2),
+                Variable("arr", ".word 0\n.word 1", 4, 2)
+            ],
+            [
+                ((4, "int"), 1)
+            ]
+        ),
+        (
+            "findMaxInArr",
+            [
+                Variable("size", ".word 2", 4, 2),
+                Variable("arr", ".word 1\n.word 0", 4, 2)
+            ],
+            [
+                ((4, "int"), 1)
+            ]
+        ),
+        (
+            "findMaxInArr",
+            [
+                Variable("size", ".word 3", 4, 2),
+                Variable("arr", ".word 2\n.word 3\n.word 1", 12, 2)
+            ],
+            [
+                ((4, "int"), 3)
+            ]
         )
     ]
 )
 
 
-def test_main(dataIn, expected):
+def test_main(mainFileName, dataIn, expected):
     outRoot = os.path.join("test", "out")
-    srcFileName = os.path.join("src", "helloWorld.s")
-    name = "HelloWorldTest"
+    srcFileName = os.path.join("src", mainFileName + ".s")
+    name = mainFileName + "Test"
 
     testName = name + str(test_main.counter)
     testDir = os.path.join(outRoot, testName)

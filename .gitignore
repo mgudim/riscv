@@ -1,4 +1,6 @@
 todo.txt
+test.c
+test.s
 
 *.pyc
 
@@ -12,5 +14,6 @@ todo.txt
 *.dbg
 
 __pycache__
+tmp
 test/out
 docker/qemu
