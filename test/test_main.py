@@ -104,7 +104,43 @@ def checkOutput(out, expected):
             [
                 ((4, "int"), 3)
             ]
-        )
+        ),
+        (
+            "gcdEuclid",
+            [
+                Variable("arr", ".word 1\n.word 1\n.word 1", 8, 2)
+            ],
+            [
+                ((4, "int"), 1)
+            ]
+        ),
+        (
+            "gcdEuclid",
+            [
+                Variable("arr", ".word 4\n.word 2\n.word 1", 8, 2)
+            ],
+            [
+                ((4, "int"), 2)
+            ]
+        ),
+        (
+            "gcdEuclid",
+            [
+                Variable("arr", ".word 4\n.word 2\n.word 1", 8, 2)
+            ],
+            [
+                ((4, "int"), 2)
+            ]
+        ),
+        (
+            "gcdEuclid",
+            [
+                Variable("arr", ".word 1071\n.word 462\n.word 1", 8, 2)
+            ],
+            [
+                ((4, "int"), 21)
+            ]
+        ),
     ]
 )
 
